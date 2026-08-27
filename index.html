@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wattan Construction | Heavy Machinery & Construction Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Oswald:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal:#17140F;
+    --charcoal-2:#211D17;
+    --steel:#4A4640;
+    --concrete:#EEEAE1;
+    --concrete-2:#E2DCCE;
+    --yellow:#F5A81C;
+    --yellow-dark:#C6800A;
+    --rust:#A63A24;
+    --white:#FFFFFF;
+    --line: rgba(255,255,255,0.14);
+    --line-dark: rgba(0,0,0,0.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--concrete);
+    color:var(--charcoal);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    line-height:1.08;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+
+  /* Hazard stripe signature element */
+  .hazard{
+    height:10px;
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--yellow),
+      var(--yellow) 16px,
+      var(--charcoal) 16px,
+      var(--charcoal) 32px
+    );
+  }
+  .hazard.thin{height:6px;}
+
+  /* ===== NAV ===== */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:var(--charcoal);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 24px;
+  }
+  .brand{
+    color:var(--white);
+    font-family:'Oswald',sans-serif;
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:0.04em;
+  }
+  .brand span{color:var(--yellow);}
+  nav.links{display:flex; gap:32px;}
+  nav.links a{
+    color:var(--concrete);
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:6px 2px;
+    border-bottom:2px solid transparent;
+    transition:border-color .2s, color .2s;
+  }
+  nav.links a:hover{color:var(--yellow); border-color:var(--yellow);}
+  .menu-toggle{display:none; background:none; border:none; color:var(--white); font-size:28px; cursor:pointer;}
+
+  @media (max-width:860px){
+    nav.links{
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--charcoal-2);
+      flex-direction:column; gap:0;
+      max-height:0; overflow:hidden;
+      transition:max-height .3s ease;
+    }
+    nav.links.open{max-height:400px;}
+    nav.links a{padding:16px 24px; border-bottom:1px solid var(--line); width:100%;}
+    .menu-toggle{display:block;}
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    background:linear-gradient(180deg, rgba(23,20,15,0.72), rgba(23,20,15,0.88)), url('images/dozer-1.jpeg') center 60%/cover no-repeat;
+    color:var(--white);
+    padding:120px 24px 100px;
+    text-align:left;
+  }
+  .hero-inner{max-width:720px;}
+  .eyebrow{
+    color:var(--yellow);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:''; width:28px; height:2px; background:var(--yellow); display:inline-block;}
+  .hero h1{
+    font-size:clamp(40px, 7vw, 74px);
+    font-weight:700;
+    color:var(--white);
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--yellow);
+  }
+  .hero .tag{
+    margin-top:18px;
+    font-family:'Oswald',sans-serif;
+    font-size:clamp(18px,2.4vw,24px);
+    color:var(--concrete);
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+  }
+  .hero p{
+    margin-top:22px;
+    max-width:560px;
+    font-size:16.5px;
+    color:rgba(255,255,255,0.82);
+  }
+  .btn-row{display:flex; gap:16px; margin-top:38px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 30px;
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    border-radius:2px;
+    transition:transform .15s ease, box-shadow .15s ease;
+    border:2px solid transparent;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--yellow); color:var(--charcoal);}
+  .btn-primary:hover{box-shadow:0 8px 20px rgba(245,168,28,0.35);}
+  .btn-outline{border-color:rgba(255,255,255,0.5); color:var(--white);}
+  .btn-outline:hover{border-color:var(--white);}
+
+  /* ===== SECTION shared ===== */
+  section{padding:88px 0;}
+  .section-dark{background:var(--charcoal); color:var(--concrete);}
+  .section-dark h2, .section-dark h3{color:var(--white);}
+  .kicker{
+    font-size:13px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--rust);
+    margin-bottom:14px;
+  }
+  .section-dark .kicker{color:var(--yellow);}
+  h2.section-title{font-size:clamp(30px,4vw,44px); margin-bottom:20px; max-width:680px;}
+  .lede{font-size:17px; max-width:620px; color:var(--steel);}
+  .section-dark .lede{color:rgba(238,234,225,0.78);}
+
+  /* ===== ABOUT ===== */
+  .about-grid{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:64px; align-items:start; margin-top:44px;
+  }
+  @media (max-width:860px){.about-grid{grid-template-columns:1fr;}}
+  .stat-card{
+    background:var(--white);
+    border:1px solid var(--line-dark);
+    border-left:6px solid var(--yellow);
+    padding:30px 28px;
+    margin-bottom:20px;
+  }
+  .stat-card h4{font-size:15px; letter-spacing:0.05em; margin-bottom:8px; color:var(--charcoal);}
+  .stat-card p{font-size:14.5px; color:var(--steel);}
+
+  /* ===== MACHINERY ===== */
+  .machine-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:22px; margin-top:48px;
+  }
+  @media (max-width:980px){.machine-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.machine-grid{grid-template-columns:1fr;}}
+  .machine-card{
+    background:var(--charcoal-2);
+    border:1px solid var(--line);
+    overflow:hidden;
+    position:relative;
+  }
+  .machine-photo{
+    height:190px; width:100%; overflow:hidden; position:relative;
+  }
+  .machine-photo img{width:100%; height:100%; object-fit:cover; transition:transform .4s ease;}
+  .machine-card:hover .machine-photo img{transform:scale(1.06);}
+  .machine-tag{
+    position:absolute; top:12px; left:12px;
+    background:var(--yellow); color:var(--charcoal);
+    font-family:'Oswald',sans-serif; font-weight:700; font-size:12px;
+    letter-spacing:0.06em;
+    padding:4px 10px;
+  }
+  .machine-body{padding:22px;}
+  .machine-body h3{font-size:19px; color:var(--white); margin-bottom:8px;}
+  .machine-body p{font-size:14px; color:rgba(238,234,225,0.72);}
+
+  .machine-placeholder{
+    height:190px; width:100%;
+    background: repeating-linear-gradient(-45deg, var(--yellow), var(--yellow) 14px, var(--charcoal) 14px, var(--charcoal) 28px);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .machine-placeholder .badge{
+    background:var(--charcoal); color:var(--yellow);
+    font-family:'Oswald',sans-serif; font-weight:600; font-size:13px;
+    letter-spacing:0.05em; padding:10px 16px; text-align:center;
+    border:1px solid rgba(245,168,28,0.5);
+  }
+
+  /* ===== SERVICES ===== */
+  .services-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:48px;
+  }
+  @media (max-width:760px){.services-grid{grid-template-columns:1fr;}}
+  .service-card{
+    background:var(--white);
+    padding:36px 32px;
+    border-top:4px solid var(--charcoal);
+  }
+  .service-card .num{
+    font-family:'Oswald',sans-serif; font-weight:700; color:var(--yellow-dark);
+    font-size:13px; letter-spacing:0.1em; margin-bottom:14px; display:block;
+  }
+  .service-card h3{font-size:22px; margin-bottom:12px;}
+  .service-card p{color:var(--steel); font-size:15px;}
+
+  /* ===== PROJECTS ===== */
+  .project-list{margin-top:44px; border-top:1px solid var(--line);}
+  .project-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 0; border-bottom:1px solid var(--line);
+    gap:20px;
+  }
+  .project-row .name{
+    font-family:'Oswald',sans-serif; font-size:clamp(18px,2.6vw,24px);
+    color:var(--white); text-transform:uppercase; letter-spacing:0.01em;
+  }
+  .project-row .mark{
+    width:10px; height:10px; background:var(--yellow); flex-shrink:0;
+    transform:rotate(45deg);
+  }
+  .project-row-inner{display:flex; align-items:center; gap:18px;}
+
+  /* ===== WHY ===== */
+  .why-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:48px;
+  }
+  @media (max-width:980px){.why-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.why-grid{grid-template-columns:1fr;}}
+  .why-card{padding:0;}
+  .why-icon{
+    width:52px; height:52px; border-radius:50%;
+    background:var(--charcoal); display:flex; align-items:center; justify-content:center;
+    margin-bottom:20px;
+  }
+  .why-icon svg{width:24px; height:24px; stroke:var(--yellow);}
+  .why-card h3{font-size:17px; margin-bottom:10px;}
+  .why-card p{font-size:14.5px; color:var(--steel);}
+
+  /* ===== CONTACT ===== */
+  .contact-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px; margin-top:48px; align-items:start;
+  }
+  @media (max-width:860px){.contact-grid{grid-template-columns:1fr;}}
+  .contact-line{
+    display:flex; gap:16px; align-items:flex-start;
+    padding:20px 0; border-bottom:1px solid var(--line);
+  }
+  .contact-line:first-child{border-top:1px solid var(--line);}
+  .contact-line .icon{
+    width:36px; height:36px; flex-shrink:0; border-radius:50%;
+    background:rgba(245,168,28,0.14); display:flex; align-items:center; justify-content:center;
+  }
+  .contact-line .icon svg{width:18px; height:18px; stroke:var(--yellow);}
+  .contact-line h4{font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--yellow); margin-bottom:4px;}
+  .contact-line p{font-size:15px; color:var(--concrete);}
+  .contact-btns{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .map-frame{
+    border:1px solid var(--line); height:100%; min-height:360px;
+    filter:grayscale(0.15) contrast(1.05);
+  }
+  .map-frame iframe{width:100%; height:100%; min-height:360px; border:0; display:block;}
+
+  footer{
+    background:var(--charcoal); color:rgba(238,234,225,0.55);
+    padding:34px 0; text-align:center; font-size:13px;
+  }
+  footer strong{color:var(--concrete);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hazard thin"></div>
+  <div class="nav wrap">
+    <a href="#home" class="brand">WATTAN<span>.</span>CONSTRUCTION</a>
+    <nav class="links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#machinery">Machinery</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">&#9776;</button>
+  </div>
+</header>
+
+<!-- ===== HOME / HERO ===== -->
+<section class="hero" id="home">
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Islamabad, Pakistan</div>
+    <h1>Wattan <em>Construction</em></h1>
+    <div class="tag">Heavy Machinery &amp; Construction Services</div>
+    <p>We deal in all kinds of heavy construction machinery and provide reliable machinery and construction-site services, including the import of heavy equipment for construction projects.</p>
+    <div class="btn-row">
+      <a href="#machinery" class="btn btn-primary">View Our Machinery</a>
+      <a href="#contact" class="btn btn-outline">Contact Us</a>
+    </div>
+  </div>
+</section>
+<div class="hazard"></div>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="wrap">
+    <div class="kicker">About Us</div>
+    <h2 class="section-title">Built on heavy equipment and hands-on site experience.</h2>
+    <div class="about-grid">
+      <div>
+        <p class="lede">Wattan Construction is a heavy machinery and construction company based in Islamabad, Pakistan. We deal in a wide range of construction machinery and provide services for construction sites.</p>
+        <p class="lede" style="margin-top:18px;">Our business includes the import of heavy machinery and construction-site work. Through our experience working on major construction projects, we aim to provide dependable machinery and services to our clients.</p>
+      </div>
+      <div>
+        <div class="stat-card">
+          <h4>MAJOR PROJECT EXPERIENCE</h4>
+          <p>Our project experience includes the New Islamabad International Airport and several other major construction and development projects.</p>
+        </div>
+        <div class="stat-card">
+          <h4>MACHINERY IMPORT</h4>
+          <p>We source and import heavy construction equipment according to project requirements.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MACHINERY ===== -->
+<section class="section-dark" id="machinery">
+  <div class="wrap">
+    <div class="kicker">Our Machinery</div>
+    <h2 class="section-title">Equipment for every stage of the site.</h2>
+    <p class="lede">From breaking ground to laying the final surface, our fleet covers excavation, earthmoving, material transport, and compaction.</p>
+
+    <div class="machine-grid">
+      <div class="machine-card">
+        <div class="machine-photo">
+          <img src="images/excavator-1.jpeg" alt="Heavy-duty excavator on a construction site">
+          <span class="machine-tag">EX&#8202;&mdash;&#8202;01</span>
+        </div>
+        <div class="machine-body">
+          <h3>Excavators</h3>
+          <p>Heavy-duty excavators for excavation, earthmoving and construction-site operations.</p>
+        </div>
+      </div>
+
+      <div class="machine-card">
+        <div class="machine-photo">
+          <img src="images/dozer-1.jpeg" alt="Bulldozer moving earth on a construction site">
+          <span class="machine-tag">DZ&#8202;&mdash;&#8202;02</span>
+        </div>
+        <div class="machine-body">
+          <h3>Dozers</h3>
+          <p>Powerful dozers for earthmoving, land preparation and construction work.</p>
+        </div>
+      </div>
+
+      <div class="machine-card">
+        <div class="machine-placeholder">
+          <div class="badge">Dumper Truck<br>photo to be added</div>
+        </div>
+        <div class="machine-body">
+          <h3>Dumper Trucks</h3>
+          <p>Heavy dumper trucks for transportation of soil, aggregates and construction materials.</p>
+        </div>
+      </div>
+
+      <div class="machine-card">
+        <div class="machine-photo">
+          <img src="images/roller-1.jpeg" alt="Road roller compacting asphalt on a road site">
+          <span class="machine-tag">RR&#8202;&mdash;&#8202;03</span>
+        </div>
+        <div class="machine-body">
+          <h3>Road Rollers</h3>
+          <p>Road rollers for compaction and road and construction-site preparation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services">
+  <div class="wrap">
+    <div class="kicker">Our Services</div>
+    <h2 class="section-title">What we do on and off the site.</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="num">SERVICE &#8202;01</span>
+        <h3>Machinery Import</h3>
+        <p>We import heavy construction machinery and source equipment according to project requirements.</p>
+      </div>
+      <div class="service-card">
+        <span class="num">SERVICE &#8202;02</span>
+        <h3>Construction Site Work</h3>
+        <p>We provide heavy machinery and construction-site services for major construction and development projects.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section class="section-dark" id="projects">
+  <div class="wrap">
+    <div class="kicker">Our Projects</div>
+    <h2 class="section-title">Where our machinery has worked.</h2>
+    <div class="project-list">
+      <div class="project-row"><div class="project-row-inner"><span class="mark"></span><span class="name">New Islamabad International Airport</span></div></div>
+      <div class="project-row"><div class="project-row-inner"><span class="mark"></span><span class="name">Metro City</span></div></div>
+      <div class="project-row"><div class="project-row-inner"><span class="mark"></span><span class="name">Bahria Enclave</span></div></div>
+      <div class="project-row"><div class="project-row-inner"><span class="mark"></span><span class="name">Bara Kahu 360 Residencies</span></div></div>
+      <div class="project-row"><div class="project-row-inner"><span class="mark"></span><span class="name">City Housing Kharian</span></div></div>
+      <div class="project-row"><div class="project-row-inner"><span class="mark"></span><span class="name">Great Jamia Mosque, Karachi</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section id="why">
+  <div class="wrap">
+    <div class="kicker">Why Choose Us</div>
+    <h2 class="section-title">Reasons clients come back to Wattan.</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l4-4h8l4 4v10M9 20v-6h6v6"/></svg></div>
+        <h3>Heavy Machinery</h3>
+        <p>We deal in a wide range of construction machinery.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 12l4-4M3 12l4 4M21 12l-4-4M21 12l-4 4"/></svg></div>
+        <h3>Machinery Import</h3>
+        <p>We import machinery for construction and project requirements.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V9l8-6 8 6v12M9 21v-6h6v6"/></svg></div>
+        <h3>Project Experience</h3>
+        <p>Experience working on major construction and development projects.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3>Construction Site Services</h3>
+        <p>We provide machinery and support for construction-site operations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="section-dark" id="contact">
+  <div class="wrap">
+    <div class="kicker">Get In Touch</div>
+    <h2 class="section-title">Wattan Construction</h2>
+
+    <div class="contact-grid">
+      <div>
+        <div class="contact-line">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <h4>Office</h4>
+            <p>Office No. 10, Mehran Plaza, Tarnol, Islamabad</p>
+          </div>
+        </div>
+        <div class="contact-line">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div>
+            <h4>Phone</h4>
+            <p>0300 0553350 &nbsp;/&nbsp; 0300 0553354</p>
+          </div>
+        </div>
+        <div class="contact-line">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></div>
+          <div>
+            <h4>Email</h4>
+            <p>Wattan.construction@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="contact-btns">
+          <a href="tel:03000553350" class="btn btn-primary">Call Us</a>
+          <a href="mailto:Wattan.construction@gmail.com" class="btn btn-outline">Email Us</a>
+          <a href="https://wa.me/923000553350" class="btn btn-outline">WhatsApp Us</a>
+        </div>
+      </div>
+
+      <div class="map-frame">
+        <iframe
+          src="https://maps.google.com/maps?q=Mehran%20Plaza%2C%20Tarnol%2C%20Islamabad&t=&z=15&ie=UTF8&iwloc=&output=embed"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Wattan Construction office location - Mehran Plaza, Tarnol, Islamabad">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hazard thin"></div>
+<footer>
+  <div class="wrap">&copy; <span id="year"></span> <strong>Wattan Construction</strong> &middot; Islamabad, Pakistan</div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+</script>
+
+</body>
+</html>
